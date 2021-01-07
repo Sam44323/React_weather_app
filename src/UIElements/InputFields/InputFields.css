@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+.cityClass {
+  width: 40%;
+  font-size: 1.7rem;
+  outline: none;
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border: 0px;
+  border-bottom: 3px solid #2e0c4b;
+}
+
+.cityClass:focus {
+  background-color: transparent;
+}
+
+.latLng {
+  width: 17%;
+  margin: 0px 30px;
+  font-size: 1.3rem;
+  outline: none;
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border: 0px;
+  border-bottom: 3px solid #2e0c4b;
+}
+
+.labelClass {
+  margin-right: 10px;
+  font-size: 1.1rem;
+  vertical-align: bottom;
+  color: white;
+}
+
+/*for hiding the arrows in the input*/
+
+input[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

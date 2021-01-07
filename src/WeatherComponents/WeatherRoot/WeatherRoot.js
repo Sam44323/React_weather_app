@@ -4,21 +4,17 @@ import './WeatherRoot.css';
 import Picture from '../../UIElements/PictureElement/PictureElement';
 import TimeComponent from '../../UIElements/Timedisplay/Timedisplay';
 import WeatherLinks from './WeatherLinks/WeatherLinks';
-let timeObject = {
-  hours: new Date().getHours(),
-  minutes: new Date().getMinutes(),
-  seconds: new Date().getSeconds(),
-};
+
 class WeatherRoot extends React.Component {
   state = {
     date: {
-      hours: timeObject.hours,
-      minutes: timeObject.minutes,
-      seconds: timeObject.seconds,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
     },
     greetings: {
-      timing: timeObject.hours > 12 ? 'PM' : 'AM',
-      greet: timeObject.hours > 12 ? 'Good Evening' : 'Good Morning',
+      timing: '--',
+      greet: '--',
     },
   };
 
