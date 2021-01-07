@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+/*evening related times*/
+
+.evening {
+  background-color: rgb(34, 40, 49, 0.9);
+}
+
+.evening:hover {
+  background-color: rgb(34, 40, 49);
+}
+
+.eveningLink {
+  text-decoration: none;
+  color: #fde8cd;
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
+.eveningLink:hover {
+  color: #ffdd93;
+}
+
+.even {
+  color: #ff9d72;
+}
+
+/*afternoon related times*/
+
+.afternoon {
+  background-color: rgb(192, 67, 67, 0.7);
+}
+
+.afternoon:hover {
+  background-color: rgb(192, 67, 67);
+}
+
+.afternoonLink {
+  text-decoration: none;
+  color: #222831;
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
+.afternoonLink:hover {
+  color: #f1f1f1;
+}
+
+.aftern {
+  color: #f1f1f1;
+}
+
+/*morning related times*/
+
+.morning {
+  background-color: rgb(240, 84, 84, 0.7);
+}
+
+.morning:hover {
+  background-color: rgb(240, 84, 84);
+}
+
+.morningLink {
+  text-decoration: none;
+  color: #222831;
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
+.morningLink:hover {
+  color: #f1f1f1;
+}
+
+.morn {
+  color: #f1f1f1;
+}
+
+.weatherLink {
+  display: inline-block;
+  border-radius: 10px;
+  margin: 0px 13px;
+  background-repeat: no-repeat;
+  height: 240px;
+  width: 300px;
+}
+
+.weatherPageInfo {
+  margin-top: 0px;
+  margin-bottom: 17px;
+}
+
+.linkDescription {
+  font-family: 'Noto Serif', serif;
+  font-size: 2.1rem;
+  display: inline-block;
+  margin: 0px;
+  padding-top: 70px;
+}

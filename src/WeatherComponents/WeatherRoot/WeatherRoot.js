@@ -16,7 +16,10 @@ class WeatherRoot extends React.Component {
       minutes: timeObject.minutes,
       seconds: timeObject.seconds,
     },
-    greetings: {},
+    greetings: {
+      timing: timeObject.hours > 12 ? 'PM' : 'AM',
+      greet: timeObject.hours > 12 ? 'Good Evening' : 'Good Morning',
+    },
   };
 
   componentDidMount() {
@@ -72,7 +75,7 @@ class WeatherRoot extends React.Component {
             time={this.state.greetings.timing}
             greetings={this.state.greetings.greet}
           />
-          <WeatherLinks />
+          <WeatherLinks condition={this.state.greetings.greet} />
         </Picture>
       </React.Fragment>
     );
