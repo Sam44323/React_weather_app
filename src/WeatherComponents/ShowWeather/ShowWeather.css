@@ -22,7 +22,7 @@
 
 .userData {
   background: linear-gradient(79deg, rgb(35, 7, 77), rgb(204, 83, 51));
-  height: 380px;
+  height: 100vh;
   text-align: center;
 }
 
@@ -31,8 +31,8 @@
   background: rgb(255, 255, 255, 0.1);
   width: 90%;
   margin-left: 5%;
-  top: 16px;
-  padding-top: 30px;
+  top: 6px;
+  padding-top: 10px;
   border-radius: 10px;
   box-shadow: 0px 2px 11px 7px rgba(0, 0, 0, 0.4);
 }
@@ -58,4 +58,14 @@
 
 .locationTitle {
   margin: 0px;
+}
+
+/*Location button div styling*/
+.locationButton {
+  margin-bottom: 17px;
+  margin-top: 7px;
+}
+
+.showWeatherButton {
+  padding-bottom: 15px;
 }
