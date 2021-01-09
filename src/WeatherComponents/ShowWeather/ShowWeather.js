@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './ShowWeather.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 import InputFields from '../../UIElements/InputFields/InputFields';
 import LocationButton from '../../UIElements/Buttons/LocationButton/LocationButton';
 import ShowWeatherButton from '../../UIElements/Buttons/Show/Show';
 import Dropdown from '../../UIElements/DropDown/DropDown';
 import WeatherDataComp from '../../UIElements/WeatherDataComp/WeatherDataComp';
+import axios from '../../axios-instance/customAxios';
+
+const API_ID = 'ab2f2650d9cd5285de075fbe0932bde1';
 
 class ShowWeather extends Component {
   state = {
@@ -17,25 +22,11 @@ class ShowWeather extends Component {
     loading: false,
     locationText: 'Get Location',
     weatherText: 'Show Weather',
+    hasData: false,
     weatherData: {
-      weather: {
-        id: 721,
-        main: 'Haze',
-        description: 'haze',
-        icon: '50n',
-      },
-      main: {
-        temp: 75.6,
-        feels_like: 78.24,
-        temp_min: 73.4,
-        temp_max: 78.01,
-        pressure: 1012,
-        humidity: 68,
-      },
-      wind: {
-        speed: 4.14,
-        deg: 27,
-      },
+      weather: {},
+      main: {},
+      wind: {},
     },
   };
 
@@ -62,7 +53,7 @@ class ShowWeather extends Component {
         });
       } else {
         alert(
-          "Your browser doesn't support geolocation api. Either use a more advanced browser or enter your details manually"
+          "Your browser doesn't support geolocation api. Either use a more advanced browser or enter your details manually!"
         );
         this.setState({
           locationText: 'Get Location',
@@ -73,7 +64,42 @@ class ShowWeather extends Component {
 
   //method for getting the weather data from the user data
 
-  fetchWeather = () => {};
+  fetchWeather = () => {
+    if (
+      this.state.cityName === '' &&
+      this.state.lat === 0 &&
+      this.state.long === 0
+    ) {
+      alert('Enter some details for fetching data!');
+      return;
+    }
+    this.setState({ loading: true });
+    axios
+      .get(
+        `/weather?q=${this.state.cityName}&lat=${this.state.lat}&lon=${this.state.long}&units=${this.state.unit}&appid=${API_ID}`
+      )
+      .then((response) => {
+        const weatherData = {
+          weather: { ...response.data.weather[0] },
+          main: { ...response.data.main },
+          wind: { ...response.data.wind },
+        };
+        this.setState({
+          loading: false,
+          hasData: true,
+          weatherData: weatherData,
+          cityName: '',
+          lat: 0,
+          long: 0,
+        });
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Please try again');
+        this.setState({ loading: false });
+      });
+  };
 
   render() {
     return (
@@ -135,13 +161,23 @@ class ShowWeather extends Component {
             </div>
           </section>
           <br />
-          <section className='weatherData'>
-            <WeatherDataComp
-              unit={this.state.unit}
-              weather={this.state.weatherData.weather}
-              mainData={this.state.weatherData.main}
-              windData={this.state.weatherData.wind}
-            />
+          <section className='weatherDataSection'>
+            {!this.state.hasData ? (
+              <h1 style={{ fontSize: '1.9rem' }}>Nothing to show!</h1>
+            ) : null}
+            {this.state.loading ? (
+              <Loader type='Bars' color='white' height={80} width={80} />
+            ) : (
+              <div className='weatherData'>
+                <WeatherDataComp
+                  unit={this.state.unit}
+                  hasData={this.state.hasData}
+                  weather={this.state.weatherData.weather}
+                  mainData={this.state.weatherData.main}
+                  windData={this.state.weatherData.wind}
+                />
+              </div>
+            )}
           </section>
         </div>
       </React.Fragment>
