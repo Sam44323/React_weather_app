@@ -1,0 +1,51 @@
+/*NavLink button styles*/
+
+.goBack {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 17px;
+  background-color: black;
+  padding: 5px;
+  top: 10px;
+  left: 4px;
+  position: absolute;
+}
+
+.goBack:hover {
+  background-color: salmon;
+  color: black;
+  box-shadow: 0px 2px 11px 7px rgba(0, 0, 0, 0.4);
+}
+
+.userSection {
+  position: relative;
+  background: rgb(255, 255, 255, 0.1);
+  width: 90%;
+  margin-left: 5%;
+  top: 6px;
+  padding-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 11px 7px rgba(0, 0, 0, 0.4);
+}
+
+/*Coordinated field*/
+.coordField {
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+/*Location and weather button div styling*/
+.locationButton {
+  margin-bottom: 17px;
+  margin-top: 7px;
+}
+
+.showWeatherButton {
+  padding-bottom: 15px;
+}
+.unitsDropDown {
+  position: absolute;
+  top: 30vh;
+  left: 70vw;
+}

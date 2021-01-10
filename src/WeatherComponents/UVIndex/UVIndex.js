@@ -1,45 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-import './ShowWeather.css';
+import './UVIndex.css';
 import '../../UIElements/Shared/styles.css';
-import APIKEY from '../../UIElements/Shared/apiId';
 
+import InputFields from '../../UIElements/InputFields/InputFields';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
-import InputFields from '../../UIElements/InputFields/InputFields';
 import LocationButton from '../../UIElements/Buttons/LocationButton/LocationButton';
 import ShowWeatherButton from '../../UIElements/Buttons/Show/Show';
-import Dropdown from '../../UIElements/DropDown/DropDown';
-import WeatherDataComp from '../../UIElements/WeatherDataComp/WeatherDataComp';
-import axios from '../../axios-instance/customAxios';
+import axios from 'axios';
+import { openUV } from '../../UIElements/Shared/apiId';
 
-class ShowWeather extends Component {
+class UVIndex extends React.Component {
   state = {
-    cityName: '',
     lat: 0,
     long: 0,
-    unit: 'metric',
     loading: false,
     locationText: 'Get Location',
-    weatherText: 'Show Weather',
+    weatherText: 'Show UV',
     hasData: false,
-    weatherData: {
-      weather: {},
-      main: {},
-      wind: {},
-    },
+    uvData: {},
   };
-
-  //method for changing the input values
-
-  changeInputValue = (inputName, value) => {
-    let changedState = { ...this.state };
-    changedState[inputName] = value;
-    this.setState({ ...changedState });
-  };
-
-  //method for getting the location of the user
 
   getLocationMethod = () => {
     this.setState({ locationText: 'Fetching' });
@@ -63,66 +46,80 @@ class ShowWeather extends Component {
     }, 1000);
   };
 
-  //method for getting the weather data from the user data
-
   fetchWeather = () => {
-    if (
-      this.state.cityName === '' &&
-      this.state.lat === 0 &&
-      this.state.long === 0
-    ) {
+    if (this.state.lat === 0 && this.state.long === 0) {
       alert('Enter some details for fetching data!');
       return;
     }
-    this.setState({ loading: true });
-    axios
-      .get(
-        `/weather?q=${this.state.cityName}&lat=${this.state.lat}&lon=${this.state.long}&units=${this.state.unit}&appid=${APIKEY}`
-      )
+    this.setState({ loading: true, hasData: true });
+    axios({
+      method: 'GET',
+      url: 'https://api.openuv.io/api/v1/uv',
+      params: {
+        lat: `${this.state.lat}`,
+        lng: `${this.state.long}`,
+        dt: new Date(),
+      },
+      headers: {
+        'content-type': 'application/json',
+        'x-access-token': openUV,
+      },
+    })
       .then((response) => {
-        const weatherData = {
-          weather: { ...response.data.weather[0] },
-          main: { ...response.data.main },
-          wind: { ...response.data.wind },
+        const uv = {
+          ozone: response.data.result.ozone,
+          uv_max: response.data.result.uv_max,
         };
-        this.setState({
-          loading: false,
-          hasData: true,
-          weatherData: weatherData,
-          cityName: '',
-          lat: 0,
-          long: 0,
-        });
-        console.log(response);
+        this.setState({ loading: false, uvData: uv });
       })
       .catch((err) => {
         console.log(err);
-        alert('Please try again');
-        this.setState({ loading: false });
+        this.setState({ loading: false, hasData: false });
       });
   };
 
+  getClassValue = (value) => {
+    if (value >= 0 && value < 3) {
+      return 'lowValue';
+    } else if (value >= 3 && value < 6) {
+      return 'modValue';
+    } else if (value >= 6 && value < 8) {
+      return 'highValue';
+    } else if (value >= 8 && value < 11) {
+      return 'veryHighValue';
+    } else if (value >= 11) {
+      return 'extremeValue';
+    }
+  };
+
   render() {
+    let uvData = null;
+    if (this.state.uvData.ozone) {
+      const classValue = this.getClassValue(this.state.uvData.uv_max);
+      uvData = (
+        <div className='uvDataDivision'>
+          <h1 className='titleClass'>UV Index - Ozone Value</h1>
+          <div className='dataValue'>
+            <h1 className={`uvValueHeader ${classValue}`}>
+              UV Value Max: {this.state.uvData.uv_max}
+            </h1>
+            <h1 className='uvValueHeader ozoneValue'>
+              Ozone Value: {this.state.uvData.ozone}du
+            </h1>
+          </div>
+        </div>
+      );
+    }
     return (
       <React.Fragment>
-        <div className='userData'>
+        <div className='uvData'>
           <NavLink to='/' className='goBack'>
             Back
           </NavLink>
           <section className='userSection'>
-            <h3 className='userDataTitle'>My Weather</h3>
+            <h3 className='userDataTitle'>UV Index</h3>
             <div className='inputFields'>
-              <div className='cityField'>
-                <InputFields
-                  value={this.state.cityName}
-                  class='cityClass'
-                  label='City Name'
-                  name='cityName'
-                  type='text'
-                  changeInput={this.changeInputValue}
-                />
-              </div>
-              <div className='coordField'>
+              <div className='coordField uvIndex'>
                 <InputFields
                   value={this.state.lat}
                   class='latLng'
@@ -153,31 +150,16 @@ class ShowWeather extends Component {
                 fetchWeather={this.fetchWeather}
               />
             </div>
-            <div className='unitsDropDown'>
-              <Dropdown
-                changeUnits={(event) =>
-                  this.changeInputValue('unit', event.target.value)
-                }
-              />
-            </div>
           </section>
           <br />
-          <section className='weatherDataSection'>
+          <section className='dataSection'>
             {!this.state.hasData ? (
               <h1 style={{ fontSize: '1.9rem' }}>Nothing to show!</h1>
             ) : null}
             {this.state.loading ? (
               <Loader type='Bars' color='white' height={80} width={80} />
             ) : (
-              <div className='weatherData'>
-                <WeatherDataComp
-                  unit={this.state.unit}
-                  hasData={this.state.hasData}
-                  weather={this.state.weatherData.weather}
-                  mainData={this.state.weatherData.main}
-                  windData={this.state.weatherData.wind}
-                />
-              </div>
+              uvData
             )}
           </section>
         </div>
@@ -186,4 +168,4 @@ class ShowWeather extends Component {
   }
 }
 
-export default ShowWeather;
+export default UVIndex;

@@ -11,9 +11,9 @@ const WeatherLinks = (props) => {
         link='/weather/showWeather'
       />
       <WeatherLink
-        title='History Weather'
+        title='UV Index'
         greetings={props.condition}
-        link='/weather/historyData'
+        link='/weather/uvindex'
       />
       <WeatherLink
         title='Air Condition'

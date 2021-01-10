@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+.uvData {
+  background: #108dc7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ef8e38,
+    #108dc7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ef8e38,
+    #108dc7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+}
+
+.uvIndex {
+  margin-left: 21vw;
+  margin-top: 90px;
+}
+
+.locationButton,
+.showWeatherButton {
+  text-align: center;
+}
+
+.dataSection {
+  text-align: center;
+}
+
+/*UV Data content class*/
+.uvDataDivision {
+  background-color: rgb(255, 255, 255, 0.15);
+  width: 90%;
+  height: 34vh;
+  margin: auto;
+  border-radius: 30px;
+  padding: 17px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
+}
+
+.titleClass {
+  color: white;
+  margin: auto;
+  margin-top: 0px;
+  width: 70%;
+  font-size: 2.4rem;
+  background-color: rgb(255, 255, 255, 0.15);
+  border-radius: 30px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
+}
+
+.dataValue {
+  color: white;
+  margin: auto;
+  margin-top: 30px;
+  width: 70%;
+  background-color: rgb(255, 255, 255, 0.15);
+  border-radius: 30px;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
+  padding: 10px 0px;
+}
+
+.uvValueHeader {
+  display: inline-block;
+  width: 40%;
+  margin: 10px 13px;
+  padding: 10px;
+  border-radius: 30px;
+  font-weight: 300;
+  font-size: 1.5rem;
+  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.18);
+}
+
+.ozoneValue {
+  background-color: rgb(255, 255, 255, 0.15);
+}
+
+/*slab value for uv_max*/
+.lowValue {
+  background-color: rgb(85, 139, 47, 0.7);
+}
+.modValue {
+  background-color: rgb(249, 168, 37, 0.7);
+}
+.highValue {
+  background-color: rgb(239, 108, 0, 0.7);
+}
+.veryHighValue {
+  background-color: rgb(183, 28, 28, 0.7);
+}
+.extremeValue {
+  background-color: rgb(106, 27, 154, 0.7);
+}
