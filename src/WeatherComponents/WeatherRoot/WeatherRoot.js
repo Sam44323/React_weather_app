@@ -8,13 +8,18 @@ import WeatherLinks from './WeatherLinks/WeatherLinks';
 class WeatherRoot extends React.Component {
   state = {
     date: {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes(),
+      seconds: new Date().getSeconds(),
     },
     greetings: {
-      timing: '--',
-      greet: '--',
+      timing: new Date().getHours() < 12 ? 'AM' : 'PM',
+      greet:
+        new Date().getHours() < 12
+          ? 'Good Morning'
+          : new Date().getHours() >= 12 && new Date().getHours() < 16
+          ? 'Good Afternoon'
+          : 'Good Evening',
     },
   };
 

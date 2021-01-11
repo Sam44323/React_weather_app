@@ -51,7 +51,7 @@ class UVIndex extends React.Component {
       alert('Enter some details for fetching data!');
       return;
     }
-    this.setState({ loading: true, hasData: true });
+    this.setState({ loading: true });
     axios({
       method: 'GET',
       url: 'https://api.openuv.io/api/v1/uv',
@@ -70,7 +70,7 @@ class UVIndex extends React.Component {
           ozone: response.data.result.ozone,
           uv_max: response.data.result.uv_max,
         };
-        this.setState({ loading: false, uvData: uv });
+        this.setState({ loading: false, hasData: true, uvData: uv });
       })
       .catch((err) => {
         console.log(err);
@@ -94,10 +94,10 @@ class UVIndex extends React.Component {
 
   render() {
     let uvData = null;
-    if (this.state.uvData.ozone) {
+    if (this.state.hasData) {
       const classValue = this.getClassValue(this.state.uvData.uv_max);
       uvData = (
-        <div className='uvDataDivision'>
+        <div className='outputDataDivision'>
           <h1 className='titleClass'>UV Index - Ozone Value</h1>
           <div className='dataValue'>
             <h1 className={`uvValueHeader ${classValue}`}>
@@ -119,7 +119,7 @@ class UVIndex extends React.Component {
           <section className='userSection'>
             <h3 className='userDataTitle'>UV Index</h3>
             <div className='inputFields'>
-              <div className='coordField uvIndex'>
+              <div className='coordField sharedIndexDivision'>
                 <InputFields
                   value={this.state.lat}
                   class='latLng'

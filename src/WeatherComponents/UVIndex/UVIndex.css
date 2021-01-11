@@ -17,52 +17,12 @@
   height: 100vh;
 }
 
-.uvIndex {
-  margin-left: 21vw;
-  margin-top: 90px;
-}
-
 .locationButton,
 .showWeatherButton {
   text-align: center;
 }
 
-.dataSection {
-  text-align: center;
-}
-
 /*UV Data content class*/
-.uvDataDivision {
-  background-color: rgb(255, 255, 255, 0.15);
-  width: 90%;
-  height: 34vh;
-  margin: auto;
-  border-radius: 30px;
-  padding: 17px;
-  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
-}
-
-.titleClass {
-  color: white;
-  margin: auto;
-  margin-top: 0px;
-  width: 70%;
-  font-size: 2.4rem;
-  background-color: rgb(255, 255, 255, 0.15);
-  border-radius: 30px;
-  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
-}
-
-.dataValue {
-  color: white;
-  margin: auto;
-  margin-top: 30px;
-  width: 70%;
-  background-color: rgb(255, 255, 255, 0.15);
-  border-radius: 30px;
-  box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.48);
-  padding: 10px 0px;
-}
 
 .uvValueHeader {
   display: inline-block;

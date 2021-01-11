@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.airData {
+  height: 100vh;
+  background: #000046; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #1cb5e0,
+    #000046
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1cb5e0,
+    #000046
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.incHeight {
+  height: 130vh;
+}
+
+.airDataDivision {
+  height: 58vh;
+}
+
+.airInnerDivision {
+  width: 100%;
+}
+
+.componentsSection {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  width: 80%;
+}
+
+.airComponentHeader {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  padding: 10px;
+  font-weight: 300;
+  display: inline-block;
+}

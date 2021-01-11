@@ -93,7 +93,6 @@ class ShowWeather extends Component {
           lat: 0,
           long: 0,
         });
-        console.log(response);
       })
       .catch((err) => {
         console.log(err);
