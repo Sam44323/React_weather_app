@@ -102,3 +102,26 @@
   margin: 0px;
   padding-top: 70px;
 }
+
+@media (max-width: 745px) {
+  .weatherLink {
+    display: block;
+    border-radius: 10px;
+    margin: 0px auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 75%;
+    height: auto;
+  }
+
+  .linkDescription {
+    font-size: 1.4rem;
+    padding-top: 30px;
+  }
+
+  .eveningLink,
+  .afternoonLink,
+  .morningLink {
+    font-size: 1rem;
+  }
+}

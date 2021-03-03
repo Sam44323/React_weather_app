@@ -22,3 +22,12 @@
   background: rgb(2, 0, 36);
   background: linear-gradient(47deg, #f0c27b 44%, #4b1248 100%);
 }
+
+/*FOR SMALL SCREENS*/
+
+@media (max-width: 1024px) {
+  .image_container {
+    height: auto;
+    width: auto;
+  }
+}

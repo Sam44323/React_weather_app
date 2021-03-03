@@ -66,18 +66,28 @@ class WeatherRoot extends React.Component {
   };
 
   render() {
+    let classvalue = '';
+    if (this.state.date.hours < 12) {
+      classvalue = 'morning_image';
+    } else if (this.state.date.hours >= 12 && this.state.date.hours <= 16) {
+      classvalue = 'afternoon_image';
+    } else if (this.state.date.hours >= 17 && this.state.date.hours < 24) {
+      classvalue = 'evening_image';
+    }
     return (
       <React.Fragment>
-        <Picture date={this.state.date.hours}>
-          <TimeComponent
-            hours={this.state.date.hours}
-            minutes={this.state.date.minutes}
-            seconds={this.state.date.seconds}
-            time={this.state.greetings.timing}
-            greetings={this.state.greetings.greet}
-          />
-          <WeatherLinks condition={this.state.greetings.greet} />
-        </Picture>
+        <section className={`image_container ${classvalue}`}>
+          <div className='renderedValue'>
+            <TimeComponent
+              hours={this.state.date.hours}
+              minutes={this.state.date.minutes}
+              seconds={this.state.date.seconds}
+              time={this.state.greetings.timing}
+              greetings={this.state.greetings.greet}
+            />
+            <WeatherLinks condition={this.state.greetings.greet} />
+          </div>
+        </section>
       </React.Fragment>
     );
   }

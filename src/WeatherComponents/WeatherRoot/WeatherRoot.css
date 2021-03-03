@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+.image_container {
+  position: relative;
+  width: 100%;
+  height: 48.1vw;
+}
+
+.morning_image {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(70deg, #ff716f 40%, #febf70 100%);
+}
+
+.afternoon_image {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(47deg, #fb794d 44%, #e02a12 100%);
+}
+
+.evening_image {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(47deg, #f0c27b 44%, #4b1248 100%);
+}
+
+/*FOR SMALL SCREENS*/
+
+@media (max-width: 745px) {
+  .image_container {
+    width: 100vw;
+  }
+}

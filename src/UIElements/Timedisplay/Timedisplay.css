@@ -35,3 +35,38 @@
   text-align: center;
   font-family: 'Rubik', sans-serif;
 }
+
+/*FOR SMALL SCREENS*/
+
+@media (max-width: 745px) {
+  .time_content {
+    position: static;
+    height: 36%;
+    background-color: white;
+    width: 100%;
+    margin: 0px auto;
+    opacity: 0.15;
+    border-radius: 30px;
+    box-shadow: 0px 2px 11px 7px rgba(0, 0, 0, 0.9);
+  }
+
+  .timeDisplay-container {
+    position: static;
+  }
+
+  .timeDisplay {
+    padding-top: 30px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 3.4rem;
+    text-align: center;
+  }
+
+  .greetings_value {
+    padding-top: 30px;
+    font-size: 2.4rem;
+    position: static;
+    margin: 0px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+  }
+}

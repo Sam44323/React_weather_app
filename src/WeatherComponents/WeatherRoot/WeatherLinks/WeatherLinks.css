@@ -12,3 +12,15 @@
   background-color: rgba(241, 232, 232, 0.18);
   border-radius: 10px;
 }
+
+@media (max-width: 745px) {
+  .weatherLinksContainer {
+    position: static;
+    padding: 17px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 100px;
+    background-color: rgba(241, 232, 232, 0.18);
+    border-radius: 10px;
+  }
+}
