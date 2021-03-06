@@ -1,4 +1,4 @@
-# React Weather App
+# Hello Weathery (Weather app)
 
 ## Features
 
@@ -40,11 +40,11 @@
 **You can start contributing by cloning the repo and running the following commands**
 
 ```bash
-  # for installing the node-packages
+  # for installing the required node-packages
 
   npm install
 
-  # for running the development server
+  # for starting the development server
 
   npm start
 ```
